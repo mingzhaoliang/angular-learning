@@ -1,0 +1,123 @@
+<form (ngSubmit)="save()" [formGroup]="resourceForm" class="space-y-4 p-4">
+	<div>
+		<label
+			for="resourceName"
+			class="mb-2 after:content-['*'] after:ml-0.5 after:text-rose-500"
+			>Resource Name</label
+		>
+		<input
+			type="text"
+			id="resourceName"
+			name="resourceName"
+			formControlName="resourceName"
+			class="block w-full p-2 border border-slate-400 rounded-md"
+		/>
+		<span
+			*ngIf="displayMessage?.['resourceName']"
+			class="text-sm text-rose-600"
+		>
+			{{ displayMessage["resourceName"] }}
+		</span>
+	</div>
+	<div>
+		<label
+			for="resourceType"
+			class="mb-2 after:content-['*'] after:ml-0.5 after:text-rose-500"
+		>
+			Resource Type
+		</label>
+		<select
+			id="resourceType"
+			name="resourceType"
+			formControlName="resourceType"
+			class="block w-full p-2 border border-slate-400 rounded-md"
+		>
+			<option *ngFor="let type of resourceTypes" [ngValue]="type">
+				{{ type }}
+			</option>
+		</select>
+		<span
+			*ngIf="displayMessage?.['resourceType']"
+			class="text-sm text-rose-600"
+		>
+			{{ displayMessage["resourceType"] }}
+		</span>
+	</div>
+	<div>
+		<label
+			for="validDate"
+			class="mb-2 after:content-['*'] after:ml-0.5 after:text-rose-500"
+			>Valid Date</label
+		>
+		<input
+			type="date"
+			id="validDate"
+			name="validDate"
+			formControlName="validDate"
+			class="block w-full p-2 border border-slate-400 rounded-md"
+		/>
+		<span
+			*ngIf="displayMessage?.['validDate']"
+			class="text-sm text-rose-600"
+		>
+			{{ displayMessage["validDate"] }}
+		</span>
+	</div>
+	<div>
+		<label>
+			<input
+				type="checkbox"
+				id="ausmedLibraryResource"
+				name="ausmedLibraryResource"
+				formControlName="ausmedLibraryResource"
+				class="mr-2"
+			/>
+			Is this an Ausmed Library resource?
+		</label>
+	</div>
+	<div>
+		<label for="educators" class="mb-2">Educators</label>
+		<input
+			type="text"
+			id="educators"
+			name="educators"
+			formControlName="educators"
+			class="block w-full p-2 border border-slate-400 rounded-md"
+		/>
+	</div>
+	<div>
+		<label
+			for="duration"
+			class="mb-2 after:content-['*'] after:ml-0.5 after:text-rose-500"
+			>Duration (minutes)</label
+		>
+		<input
+			type="number"
+			id="duration"
+			name="duration"
+			formControlName="duration"
+			class="block w-full p-2 border border-slate-400 rounded-md"
+		/>
+		<span
+			*ngIf="displayMessage?.['duration']"
+			class="text-sm text-rose-600"
+		>
+			{{ displayMessage["duration"] }}
+		</span>
+	</div>
+	<div class="text-sm text-rose-600" *ngIf="errorMessage">
+		{{ errorMessage }}
+	</div>
+	<button
+		[disabled]="!resourceForm.valid"
+		type="submit"
+		[class]="
+			'p-2 text-white rounded-md transition-colors ' +
+			(this.resourceForm.valid
+				? 'bg-slate-800 hover:bg-slate-950'
+				: 'bg-slate-500')
+		"
+	>
+		Add Resource
+	</button>
+</form>

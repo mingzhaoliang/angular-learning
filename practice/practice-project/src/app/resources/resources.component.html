@@ -1,0 +1,31 @@
+<div class="p-4 space-y-4">
+	<div *ngFor="let resource of resources" class="rounded-md shadow-md">
+		<h2 class="p-3 text-lg font-bold border-b border-slate-200">Details</h2>
+		<div class="p-3 space-y-4">
+			<div class="flex justify-between">
+				<p class="font-medium">Resource Name</p>
+				<p>{{ resource.resourceName }}</p>
+			</div>
+			<div class="flex justify-between">
+				<p class="font-medium">Resource Type</p>
+				<p>{{ resource.resourceType }}</p>
+			</div>
+			<div class="flex justify-between">
+				<p class="font-medium">Valid Date</p>
+				<p>{{ resource.validDate | date }}</p>
+			</div>
+			<div class="flex justify-between">
+				<p class="font-medium">Ausmed Library Resource</p>
+				<p>{{ resource.ausmedLibraryResource ? "Yes" : "No" }}</p>
+			</div>
+			<div class="flex justify-between">
+				<p class="font-medium">Educators</p>
+				<p>{{ resource.educators || "None" }}</p>
+			</div>
+			<div class="flex justify-between">
+				<p class="font-medium">Duration</p>
+				<p>{{ resource.duration }} min</p>
+			</div>
+		</div>
+	</div>
+</div>
